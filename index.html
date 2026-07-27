@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Su Casa Thames</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
-  font-family: 'arial', serif;
-  margin: 0;
-  background: #ffffee;
-  color: #333;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #ffffee;
+      color: #333;
+      line-height: 1.5;
 }
-
 /* PORTADA */
 header {
   background: #b01212;
@@ -23,31 +25,63 @@ header {
 }
 
 .top-bar {
-  background-color: #b01212; /* bordo */
-  color: #ffffee;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;   /* 👈 centra todo */
   align-items: center;
-  padding: 8px 20px;
-  font-size: 14px;
-  border-bottom: 1px solid #ffffee;
+  gap: 20px;                 /* espacio entre elementos */
+  flex-wrap: wrap;           /* 👈 evita que se rompa en celular */
+  padding: 10px;
+  background: #b01212;       /* tu rojo */
+  color: white;
 }
 
 .top-bar a {
-  color: #fff;
-  margin-right: 12px;
+  color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-.top-bar a:hover {
-  opacity: 0.7;
+.top-bar i {
+  font-size: 18px;
 }
 
-.top-right span {
-  margin-left: 15px;
 
-}
+    /* BUSCADOR DENTRO DEL MENÚ */
+    .search-box {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: #ffffee;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+    .search-wrapper {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .search-wrapper i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b01212;
+      font-size: 18px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      font-size: 16px;
+      border: 2px solid #b01212;
+      border-radius: 25px;
+      outline: none;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .search-input:focus {
+      border-color: #800d0d;
+      box-shadow: 0 4px 14px rgba(176, 18, 18, 0.25);
+    }
 
 h1 {
   margin: 0;
@@ -111,8 +145,8 @@ h2 {
   background: #b01212;
 }
 .footer {
-  margin-top: 40px;
-  padding: 20px;
+  margin-top: 15px;
+  padding: 10px;
 
   background: #b01212;        /* 👈 fondo oscuro */
   color: #fff;
@@ -135,20 +169,18 @@ h2 {
 </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <div class="top-bar">
-  <div class="top-left">
-    <a href="https://www.facebook.com/p/Su-Casa-Restaurante-San-Isidro-100064317987173/?locale=es_LA"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/sucasasanisidro/?hl=es"><i class="fab fa-instagram"></i></a>
-    <a href="https://wa.me/5491161753406"><i class="fab fa-whatsapp"></i></a>
-  </div>
+  <a href="https://www.instagram.com/sucasasanisidro/?hl=es">
+    <i class="fab fa-instagram"></i>
+  </a>
 
-  <div class="top-right">
-<span>📞 <a href="tel:+541161753406">11 6175-3406</a></span>
-<span>✉️ <a href="mailto:sucasathames@gmail.com">sucasathames@gmail.com</a></span>
-  </div>
+  <a href="https://wa.me/5491161753406">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <span><a href="tel:+541161753406">11 6175-3406</a></span>
 </div>
-<body>
-
 <header>
   <h1> Restaurante "Su Casa" San Isidro</h1>
   <h3>MARISCOS - PESCADOS - PARRILLA - PASTAS</h3>
@@ -223,11 +255,22 @@ details[open] > summary::after {
 }
 
 </style>
+
+  <div class="container">
+
+    <!-- BARRA DE BÚSQUEDA -->
+    <div class="search-box">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="menuSearch" class="search-input" placeholder="Buscar plato, ingrediente o categoría..." onkeyup="filterMenu()">
+      </div>
+    </div>
+
 <p class="aviso">
   Las 1/2 porciones y las porciones compartidas recargan en un 30% adicional. Ejemplo: Porción $1.000 - 1/2 porción $650. 
 </p>
 
-<DETAILS>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Entradas Frías</summary>
 <div class="section">
   <div class="menu-item"><span>Atún con tomate y cebolla</span><span>$16.000</span></div>
@@ -257,9 +300,9 @@ details[open] > summary::after {
   <div class="menu-item"><span>Aceitunas a la calabresa</span><span>$3.500</span></div>
   <div class="menu-item"><span>Cóctel con palta, palmitos, langostinos y salsa golf</span><span>$42.000</span></div>
 </div>
-</DETAILS>
+</details>
 
-<DETAILS>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Entradas Calientes</summary>
 <div class="section">
   <div class="menu-item"><span>Champignones a la provenzal</span><span>$13.000</span></div>
@@ -274,9 +317,9 @@ details[open] > summary::after {
   <div class="menu-item"><span>Panaché de verduras</span><span>$13.500</span></div>
   <div class="menu-item"><span>Vegetales vaporizados</span><span>$16.000</span></div>
 </div>
-</DETAILS>
+</details>
 
-<DETAILS>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Rabas, Calamarettes, Langostinos, Vieiras y Mejillones</summary>
 <div class="section">
   <div class="menu-item"><span>Rabas a la romana</span><span>$26.500</span></div>
@@ -289,9 +332,9 @@ details[open] > summary::after {
   <div class="menu-item"><span>Vieiras (Al verdeo ó Roquefort)</span><span>$29.000</span></div>
   <div class="menu-item"><span>Mejillones con cáscara provenzal</span><span>$32.500</span></div>
 </div>
-</DETAILS>
+</details>
 
-<DETAILS>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Minutas (Milanesas, Supremas, Tortillas y Omelettes)</summary>
 <div class="section">
   <div class="menu-item"><span>Suprema (Sin guarnición)</span><span>$17.000</span></div>
@@ -311,9 +354,9 @@ details[open] > summary::after {
   <div class="menu-item"><span>Tortilla a la española</span><span>$22.000</span></div>
   <div class="menu-item"><span>Tortilla de acelga</span><span>$22.000</span></div>
 </div>
-</DETAILS>
+<details class="category-detail">
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Guarniciones</summary>
 <div class="section">
   <div class="menu-item"><span>Aros de cebolla</span><span>$9.000</span></div>
@@ -336,7 +379,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Ensaladas</summary>
 <div class="section">
   <div class="menu-item"><span>Ensaladas a elección (3 ingredientes)</span><span>$6.500</span></div>
@@ -365,7 +408,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Parrilla</summary>
 <div class="section">
   <div class="menu-item"><span>Chorizo (c/u)</span><span>$5.500 </span></div>
@@ -403,7 +446,7 @@ details[open] > summary::after {
 
 </div>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Mariscos</summary>
 <div class="section">
   <div class="menu-item"><span>Arroz con Calamares (Para compartir)</span><span>$57.500 </span></div>
@@ -421,7 +464,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Pescados</summary>
 <div class="section"> 
 
@@ -533,7 +576,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Ranas y Caracoles</summary>
 <div class="section">
   <div class="menu-item"><span>Ranas (Unidad)</span><span>$31.000 </span></div>
@@ -542,7 +585,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Pollos Elaborados: $27.000</summary>
 
 <div class="menu-item"><span></span></div>
@@ -591,7 +634,7 @@ details[open] > summary::after {
 
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Lomos de Cerdos Elaborados: $28.000</summary>
 
 <div class="menu-item"><span></span></div>
@@ -640,7 +683,7 @@ details[open] > summary::after {
 </details>
 
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Lomos de Ternera Elaborados: $49.500</summary>
  <div class="menu-item"><span></span></div>
     <!-- BLOQUE DE SALSAS -->
@@ -683,7 +726,7 @@ details[open] > summary::after {
 </div>
 </details>
 
-<details>
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Nuestras Pastas</summary>
 <h2>ÑOQUIS, FETUCCINIS y PASTA SECA ITALIANA</h2>
 <div class="menu-item"><span></span></div>
@@ -823,7 +866,7 @@ details[open] > summary::after {
 </details>
 
 
-<details>
+<details class="category-detail">
   
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Postres</summary>
 
@@ -984,8 +1027,7 @@ details[open] > summary::after {
 
 </details>
 
-<details>
-  
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Cafetería y Bebidas</summary>
   <div class="section">
     <div class="plato">
@@ -1058,8 +1100,7 @@ details[open] > summary::after {
 </div>
 </details> 
 
-<details>
-  
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Vinos Tintos</summary>
  <div class="section">
 
@@ -1155,8 +1196,7 @@ details[open] > summary::after {
 </div>
 </details> 
 
-<details>
-
+<details class="category-detail">
 <summary style="font-size: 24px ; color:black; font-weight:bold;font">Vinos Blancos y Rosados</summary>
   <div class="section">
     <div class="plato">
@@ -1218,8 +1258,7 @@ details[open] > summary::after {
 </div>
 </details> 
 
-<details>
-  
+<details class="category-detail">
   <summary style="font-size: 24px ; color:black; font-weight:bold;font">Champañas y Sidras</summary>
   <div class="section">
     <div class="plato">
@@ -1271,22 +1310,81 @@ details[open] > summary::after {
 
 <div class="footer">
   
-  <div class="pagos">
-    <strong>Medios de pago</strong><br>
-    Efectivo · Tarjetas de crédito/débito · Mercado Pago
-  </div>
+<!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <strong>Restaurante "Su Casa" Thames - San Isidro</strong>
+    <p class="direccion">📍 Colectora Panamericana Oeste 1968, Boulogne, San Isidro.</p>
+    <p class="pagos">💳 Aceptamos Mercado Pago, Tarjetas de Débito y Crédito, Efectivo.</p>
+    <p style="font-size: 12px; opacity: 0.8; margin-top: 15px;">© 2026 Restaurante Su Casa. Todos los derechos reservados.</p>
+  </footer>
 
-  <div class="direccion">
-    <strong>Dirección</strong><br>
-    Colectora Panamericana Oeste 1968 (casi Thames) - San Isidro
-</div>
+<script>
+  function filterMenu() {
+    const query = document.getElementById('menuSearch').value.toLowerCase().trim();
+    const categories = document.querySelectorAll('.category-detail');
 
-    <div class="telefono">
-    <strong>Teléfono</strong><br>
-    11 6175-3406
-  </div>
+    categories.forEach(category => {
+      const summary = category.querySelector('summary');
+      const categoryTitle = summary ? summary.textContent.toLowerCase() : '';
+      const items = category.querySelectorAll('.menu-item, .salsa');
+      const sectionTitles = category.querySelectorAll('.subtitle-list, .section-title');
 
-</div>
+      // 1. Si el buscador está vacío: restaurar vistas
+      if (query === '') {
+        category.style.display = '';
+        category.open = false; // O quita esta línea si prefieres no alterar el desplegable del usuario
+        items.forEach(item => item.style.display = '');
+        sectionTitles.forEach(title => title.style.display = '');
+        return;
+      }
+
+      // 2. Si el nombre de la categoría principal coincide: mostrar todo
+      const categoryMatches = categoryTitle.includes(query);
+      
+      let hasItemMatch = false;
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (categoryMatches || text.includes(query)) {
+          item.style.display = '';
+          hasItemMatch = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // 3. Mantener visibles los títulos/subtítulos si hay contenido visible o si la categoría coincide
+      sectionTitles.forEach(title => {
+        title.style.display = (categoryMatches || hasItemMatch) ? '' : 'none';
+      });
+
+      // 4. Mostrar u ocultar la categoría desplegable completa
+      if (categoryMatches || hasItemMatch) {
+        category.style.display = '';
+        category.open = true; // Abre la categoría automáticamente para mostrar los resultados
+      } else {
+        category.style.display = 'none';
+        category.open = false;
+      }
+    });
+  }
+</script>
+
+<script>
+const detalles = document.querySelectorAll("details");
+
+detalles.forEach((detalle) => {
+  detalle.addEventListener("toggle", () => {
+    if (detalle.open) {
+      detalles.forEach((otro) => {
+        if (otro !== detalle) {
+          otro.removeAttribute("open");
+        }
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
