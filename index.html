@@ -42,6 +42,16 @@ header {
   font-size: 18px;
 }
 
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 
     /* BUSCADOR DENTRO DEL MENÚ */
     .search-box {
@@ -49,13 +59,16 @@ header {
       top: 10px;
       z-index: 100;
       background: #ffffee;
-      padding: 10px 0;
+      padding: 10px 16px;
       margin-bottom: 20px;
+      box-sizing: border-box;
     }
     .search-wrapper {
       position: relative;
+      width: 100%;
       max-width: 600px;
       margin: 0 auto;
+      box-sizing: border-box;
     }
     .search-wrapper i {
       position: absolute;
@@ -67,6 +80,7 @@ header {
     }
     .search-input {
       width: 100%;
+      box-sizing: border-box;
       padding: 12px 15px 12px 45px;
       font-size: 16px;
       border: 2px solid #b01212;
